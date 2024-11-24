@@ -33,8 +33,14 @@
         <form method="POST" class="dangnhap" accept-charset="ASCII">
             <h2 class="text-center py-2">Đăng nhập</h2>
             <div class="form-group bg-white p-4 border rounded" style="box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);">
-                <input type="text" name="username" id="username" placeholder="Username" class="form-control my-3" required>
-                <input type="password" name="password" id="password" placeholder="Password" class="form-control my-3" required>
+                <div class="input-group mb-3">
+                    <label for="username" class="input-group-text"><i class="fa-solid fa-user"></i></label>
+                    <input type="text" name="username" id="username" placeholder="Tài khoản" class="form-control" required>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="password" class="input-group-text"><i class="fa-solid fa-lock"></i></label>
+                    <input type="password" name="password" id="password" placeholder="Mật khẩu" class="form-control" required>
+                </div>
                 <div class="btdangnhap d-grid">
                     <button type="submit" name="dangky" class="login btn btn-primary text-capitalize">Đăng nhập</button>
                 </div>
