@@ -1,0 +1,48 @@
+/* .footer-title {
+    position: relative;
+}
+
+.footer-title::after {
+    position: absolute;
+    content: "";
+    width: 30%;
+    height: .1em;
+    background: whitesmoke;
+    bottom: -12px;
+    left: 0;
+}
+
+@media (max-width: 575.98px) {
+    .hide-on-phone {
+        display: none;
+    }
+} */
+
+.carousel-control-prev, .carousel-control-next{
+    display: flex;
+    height: 40px;
+    width: 40px;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 50%;
+}
+
+.carousel-control-prev{
+    left: 20px;
+}
+
+.carousel-control-next{
+    right: 20px;
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover{
+    background: #fff;
+    box-shadow: 0 1px 9px -4px;
+}
+
+.card-img-top{
+    max-width: 340px;
+    max-height: 230px;
+}

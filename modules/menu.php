@@ -1,0 +1,63 @@
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <button
+                class="navbar-toggler order-lg-2"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand mr-auto" href="#">
+                <img src="./img/download.png" alt="" width="112" height="112">
+            </a>
+            <form class="d-flex order-lg-1">
+                <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
+            <div class="collapse navbar-collapse ms-5" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active text-uppercase fs-6 fw-bold mx-4" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle text-uppercase fs-6 fw-bold mx-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            FOOTWEAR
+                        </a>
+                        <ul class="dropdown-menu bg-muted rounded-0" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item text-uppercase mx-2" href="#">BASKETBALL</a></li>
+                            <li><a class="dropdown-item text-uppercase mx-2" href="#">SNEAKERS</a></li>
+                            <li><a class="dropdown-item text-uppercase mx-2" href="#">RUNNING</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle text-uppercase fw-bold fs-6 mx-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ACCESSORIES
+                        </a>
+                        <ul class="dropdown-menu bg-muted rounded-0" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item text-uppercase mx-2" href="#">BALL</a></li>
+                            <li><a class="dropdown-item text-uppercase mx-2" href="#">SOCK</a></li>
+                            <li><a class="dropdown-item text-uppercase mx-2" href="#">BACKPACKS</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link active dropdown-toggle text-uppercase fw-bold fs-6 mx-4" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Black friday sale
+                        </a>
+                        <ul class="dropdown-menu bg-muted rounded-0" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item text-uppercase mx-2" href="#">Mã giảm 10%</a></li>
+                            <li><a class="dropdown-item text-uppercase mx-2" href="#">Mã giảm 100k</a></li>
+                            <li><a class="dropdown-item text-uppercase mx-2" href="#">Mã giảm 50k</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-uppercase fw-bold fs-6 mx-4" aria-current="page" href="https://www.google.com/">BLOG</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>

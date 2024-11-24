@@ -1,0 +1,19 @@
+.footer-title {
+    position: relative;
+}
+
+.footer-title::after {
+    position: absolute;
+    content: "";
+    width: 30%;
+    height: .1em;
+    background: whitesmoke;
+    bottom: -12px;
+    left: 0;
+}
+
+@media (max-width: 575.98px) {
+    .hide-on-phone {
+        display: none;
+    }
+}
