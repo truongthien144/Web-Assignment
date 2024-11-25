@@ -1,7 +1,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
-        <div class="container">
+        <div class="container-fluid">
             <button
                 class="navbar-toggler order-lg-2"
                 type="button"
@@ -12,14 +12,14 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand mr-auto" href="#">
+            <a class="navbar-brand mr-auto ms-5" href="#">
                 <img src="./img/download.png" alt="" width="112" height="112">
             </a>
             <form class="d-flex order-lg-1">
                 <input class="form-control" name="tim" id="input1" type="search" placeholder="Tìm kiếm" aria-label="Search">
                 <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 <div class="dropdown">
-                    <a class="btn dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="btn dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-user"></i>
                     </a>
                     <ul class="dropdown-menu">
