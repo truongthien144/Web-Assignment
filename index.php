@@ -43,7 +43,7 @@
                     <div class="card-body">
                         <p class="card-text">Đón chào tết 2025 với chương trình sale "TẾT ĐẾN, SHOP SALE HẾT" 
                             từ ngày 26.01 đến ngày 29.02 hoà chung không khí rộn ràng của mùa xuân…</p>
-                        <a href="#" class="btn btn-outline-dark d-grid">Xem thêm</a>
+                        <a href="post3.php" class="btn btn-outline-dark d-grid">Xem thêm</a>
                     </div>
                 </div>
             </div>   
@@ -55,7 +55,7 @@
                     <div class="card-body">
                         <p class="card-text">Bên cạnh những mẫu giày đỉnh cao hay gây thất vọng, 
                             luôn tồn tại những cái tên bị đánh giá sai, có thể vì nhiều nguyên do từ brand...</p>
-                        <a href="#" class="btn btn-outline-dark d-grid">Xem thêm</a>    
+                        <a href="post2.php" class="btn btn-outline-dark d-grid">Xem thêm</a>    
                     </div>
                 </div>
             </div>          
@@ -67,7 +67,7 @@
                     <div class="card-body">
                         <p class="card-text">Basketball Store News là nơi bạn có thể tìm thấy những thông tin về những mẫu giày mới, 
                             bao gồm câu chuyện về phối màu, thiết kế, ngày ra mắt...</p>
-                        <a href="#" class="btn btn-outline-dark d-grid">Xem thêm</a>    
+                        <a href="post1.php" class="btn btn-outline-dark d-grid">Xem thêm</a>    
                     </div>
                 </div>
             </div>   
