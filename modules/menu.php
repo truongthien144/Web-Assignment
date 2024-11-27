@@ -12,7 +12,7 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand mr-auto ms-5" href="#">
+            <a class="navbar-brand mr-auto ms-5" href="./">
                 <img src="./img/download.png" alt="" width="112" height="112">
             </a>
             <form class="d-flex order-lg-1">
@@ -32,7 +32,7 @@
             <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link active text-uppercase fs-6 fw-bold mx-2" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active text-uppercase fs-6 fw-bold mx-2" aria-current="page" href="./">Home</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link active dropdown-toggle text-uppercase fs-6 fw-bold mx-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
