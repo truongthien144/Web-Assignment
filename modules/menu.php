@@ -13,7 +13,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand mr-auto ms-5" href="./">
-                <img src="./img/download.png" alt="" width="112" height="112">
+                <img src="./img/sneaker-shop.jpg" alt="" width="120" height="120">
             </a>
             <form class="d-flex order-lg-1">
                 <input class="form-control" name="tim" id="input1" type="search" placeholder="Tìm kiếm" aria-label="Search">
@@ -22,7 +22,7 @@
                     <a class="btn dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-user"></i>
                     </a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu dropdown-menu-lg-end">
                         <li><a class="dropdown-item" onclick="dangxuat();">Đăng xuất</a></li>
                         <li><a class="dropdown-item" href="change-pwd.php">Đổi mật khẩu</a></li>
                     </ul>

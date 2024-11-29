@@ -6,10 +6,10 @@
                         <h5>Nhà phân phối độc quyền</h5>
                     </div>
                     <ul class="list-unstyled">
-                        <li>Công Ty CP Thời Trang Basketball Store</li>
+                        <li>Công Ty CP Thời Trang Sneaker Vintage</li>
                         <li><i class="fa-solid fa-location-dot me-2"></i>Số 16, ngõ 218, phố Đội Cấn, Đội Cấn, Ba Đình, Hà Nội</li>
                         <li><i class="fa-solid fa-phone me-2"></i>089999 0231</li>
-                        <li><i class="fa-solid fa-envelope me-2"></i>contact@basketballstore.com</li>
+                        <li><i class="fa-solid fa-envelope me-2"></i>contact@sneakervintage.com</li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">

@@ -4,7 +4,7 @@
     loadMenu();
 ?>
 <div class="container mb-5">   
-    <h1 class="fw-bold">Những mẫu giày Underrated tại Basketball Store (Kì 1)</h1>
+    <h1 class="fw-bold">Những mẫu giày Underrated tại Sneaker Vintage (Kì 1)</h1>
     <div class="text-muted mt-2 d-flex align-items-center">
         <span class="fw-bold text-primary">Admin</span>
         <span class="mx-2">|</span>

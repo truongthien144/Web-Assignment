@@ -63,9 +63,9 @@
                 <div class="card">
                     <img src="img/news/post1.png" class="card-img-top mx-auto" alt="...">
                     <h6 class='card-subtitle my-2 text-secondary text-center'>Tin tức số 13 - Số ngày 25/11/2024</h6>
-                    <h5 class="card-title text-center my-2">Basketball Store News</h5>
+                    <h5 class="card-title text-center my-2">Sneaker Vintage News</h5>
                     <div class="card-body">
-                        <p class="card-text">Basketball Store News là nơi bạn có thể tìm thấy những thông tin về những mẫu giày mới, 
+                        <p class="card-text">Sneaker Vintage News là nơi bạn có thể tìm thấy những thông tin về những mẫu giày mới, 
                             bao gồm câu chuyện về phối màu, thiết kế, ngày ra mắt...</p>
                         <a href="post1.php" class="btn btn-outline-dark d-grid">Xem thêm</a>    
                     </div>
