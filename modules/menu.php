@@ -1,4 +1,5 @@
 </head>
+
 <body>
     <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
@@ -15,17 +16,29 @@
             <a class="navbar-brand mr-auto ms-5" href="./">
                 <img src="./img/sneaker-shop.jpg" alt="" width="120" height="120">
             </a>
-            <form class="d-flex order-lg-1">
+            <form class="d-flex order-lg-1" onsubmit="search(event);">
                 <input class="form-control" name="tim" id="input1" type="search" placeholder="Tìm kiếm" aria-label="Search">
                 <button class="btn" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                 <div class="dropdown">
-                    <a class="btn dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <?php
+                    if (isset($_SESSION['username'])) {
+                        echo '
+                        <a class="btn dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa-solid fa-user"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-lg-end">
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-lg-end">
                         <li><a class="dropdown-item" onclick="dangxuat();">Đăng xuất</a></li>
                         <li><a class="dropdown-item" href="change-pwd.php">Đổi mật khẩu</a></li>
-                    </ul>
+                        </ul>
+                        ';
+                    } else {
+                        echo '
+                        <a class="btn" href="login.php">
+                        <i class="fa-solid fa-user"></i>
+                        </a>
+                        ';
+                    }
+                    ?>
                 </div>
                 <a class="fa--shopping-bag btn me-0" href="giohang.php" title="Xem giỏ hàng"><i class="fa-solid fa-cart-shopping"></i></a>
             </form>
@@ -39,7 +52,7 @@
                             FOOTWEAR
                         </a>
                         <ul class="dropdown-menu bg-muted rounded-0" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item text-uppercase mx-2" href="#">BASKETBALL</a></li>
+                            <li><a class="dropdown-item text-uppercase mx-2" href="product.php?filter=subcategory_id&value=BAS">BASKETBALL</a></li>
                             <li><a class="dropdown-item text-uppercase mx-2" href="#">SNEAKERS</a></li>
                             <li><a class="dropdown-item text-uppercase mx-2" href="#">RUNNING</a></li>
                         </ul>
@@ -71,3 +84,4 @@
             </div>
         </div>
     </nav>
+    <div>
