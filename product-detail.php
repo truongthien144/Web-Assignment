@@ -26,30 +26,26 @@ if ($row = mysqli_fetch_array($result)) {
     }
 }
 ?>
-<div class="product-detail container">
-    <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div class="product-detail__gallery">
-                <div class="main-image" id="main-image">
-                    <?php echo '<img src="' . $img_path . '/' . $images[0] . '" alt="">'; ?>
-                </div>
-                <div class="thumbnails">
-                    <?php
-                    $img_count = count($images);
-                    if ($img_count > 5) {
-                        echo '<img src="' . $img_path . '/' . $images[0] . '" alt="Ảnh sản phẩm" class="option img--checked checked">';
-                        for ($i = 1; $i < 4; $i++) {
-                            echo '<img src="' . $img_path . '/' . $images[$i] . '" alt="Ảnh sản phẩm" class="option">';
-                        }
-                    } else if ($img_count < 5 && $img_count > 0) {
-                        echo '<img src="' . $img_path . '/' . $images[0] . '" alt="Ảnh sản phẩm" class="option img--checked checked">';
-                        for ($i = 1; $i < $img_count; $i++) {
-                            echo '<img src="' . $img_path . '/' . $images[$i] . '" alt="Ảnh sản phẩm" class="option">';
-                        }
-                    }
-                    ?>
-                </div>
-            </div>
+<div class="product-detail">
+    <div class="product-detail__gallery">
+        <div class="main-image" id="main-image">
+            <?php echo '<img src="' . $img_path . '/' . $images[0] . '" alt="">'; ?>
+        </div>
+        <div class="thumbnails">
+            <?php
+            $img_count = count($images);
+            if ($img_count > 5) {
+                echo '<img src="' . $img_path . '/' . $images[0] . '" alt="Ảnh sản phẩm" class="option img--checked checked">';
+                for ($i = 1; $i < 4; $i++) {
+                    echo '<img src="' . $img_path . '/' . $images[$i] . '" alt="Ảnh sản phẩm" class="option">';
+                }
+            } else if ($img_count < 5 && $img_count > 0) {
+                echo '<img src="' . $img_path . '/' . $images[0] . '" alt="Ảnh sản phẩm" class="option img--checked checked">';
+                for ($i = 1; $i < $img_count; $i++) {
+                    echo '<img src="' . $img_path . '/' . $images[$i] . '" alt="Ảnh sản phẩm" class="option">';
+                }
+            }
+            ?>
         </div>
     </div>
     <div class="product-detail__info">
