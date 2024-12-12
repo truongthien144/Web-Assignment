@@ -12,7 +12,8 @@ thumbnails.forEach((item, index) => {
     item.onclick = function () {
         cur_index = index;
         main_img.src = thumbnails[cur_index].src;
-        let checked_img = document.querySelector("img--checked");
+        let checked_img = document.querySelector(".img--checked");
+        console.log(checked_img);
         checked_img.classList.remove("img--checked");
         checked_img.classList.remove("checked");
         thumbnails[cur_index].classList.add("img--checked");
@@ -59,7 +60,7 @@ exit.onclick = function () {
     zoom.classList.remove("show");
 };
 
-let sizes = document.querySelectorAll(".product-detail__size > button.product-detail__size");
+let sizes = document.querySelectorAll(".product-detail__size > span.product-detail__size");
 let sizeName = document.querySelector(".product-detail__size--label > span");
 let quantityInput = document.querySelector("#quantity");
 
