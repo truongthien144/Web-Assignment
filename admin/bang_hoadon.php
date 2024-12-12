@@ -1,8 +1,8 @@
 <?php
 require_once('../connect_db.php');
 require_once('../function/price.php');
-echo '<table class="table  table-striped table-bordered">
-    <tr class="header-text-cthd text">
+echo '<table class="table table-bordered">
+    <tr class="header-text-cthd text table-secondary">
         <th class="text-center">Mã sản phẩm</th>
         <th class="text-center">Kích thước</th>
         <th class="text-center">Đơn giá</th>
