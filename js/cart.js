@@ -36,8 +36,8 @@ function removeItem(x) {
     var confirmation = confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng không?");
     if (confirmation == true) {
         var tr = x.parentElement.parentElement;
-        var item_quantity = tr.children[2].children[1].value;
-        var prod_total = tr.children[3].children[0].innerHTML
+        var item_quantity = tr.children[4].children[1].value;
+        var prod_total = tr.children[5].children[0].innerHTML
             .replaceAll(".", "")
             .replaceAll("đ", "");
 
@@ -51,7 +51,7 @@ function removeItem(x) {
 
         tr.remove();
         id = tr.getAttribute("product_id");
-        size1 = tr.children[0].children[2].getAttribute("product_size");
+        size1 = tr.children[2].children[0].children[1].getAttribute("product_size");
         deleteItem(id, size1);
         setWidthCartTableHead();
     }

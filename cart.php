@@ -8,11 +8,11 @@ loadMenu();
 require_once 'function/price.php';
 ?>
 
-<div id="content" class="content-area page-wrapper" role="main">
-    <div class="row row-main">
-        <div class="col-main">
-            <div class="large-12 col">
-                <div class="col-inner">
+<div id="content" class="container d-flex flex-column align-item-center vh-100" role="main">
+    <div class="row w-100">
+        <div class="col-lg-8 col-12 mb-4 column">
+            <div class="card">
+                <div class="card-body">
                     <div class="row row-large row-divided">
                         <?php
                         require 'connect_db.php';
@@ -31,11 +31,11 @@ require_once 'function/price.php';
                             echo "<p>Your cart is empty.</p>";
                         } else {
                             echo <<< CART_CONTENT_HEADER
-                                <div class="cart-content col">
-                                    <table>
+                                <div class="cart-content">
+                                    <table class="table table-striped">
                                     <thead>
                                     <tr>
-                                        <th class="product-name">Sản phẩm</th>
+                                        <th colspan="3" class="product-name">Sản phẩm</th>
                                         <th class="product-price">Giá</th>
                                         <th class="product-quantity">Số lượng</th>
                                         <th class="product-total">Tạm tính</th>
@@ -65,44 +65,52 @@ require_once 'function/price.php';
                                 $formatted_total_price = formatPrice($total_price);
                                 echo <<< CART_ITEM
                                     <tr class="cart-item" product_id={$row['prod_id']}>
-                                            <td class="product-name">
-                                                <button class="remove-item" onclick="removeItem(this)" ><i class="fa-solid fa-xmark"></i></button>
-                                                <a href="product-detail.php?product_id={$row['prod_id']}">
-                                                    <img src="{$img_path}/{$images[0]}" alt="{$row['product_name']}">
-                                                    <span>{$row['product_name']} - {$row['size']}</span>
-                                                </a>
+                                        <td class="product-name">
+                                            <button class="btn btn-outline-danger rounded-circle btn-sm remove-item" onclick="removeItem(this)" ><i class="fa-solid fa-xmark"></i></button>
+                                        </td>
+                                        <td>
+                                            <a href="product-detail.php?product_id={$row['prod_id']}">
+                                                <img src="{$img_path}/{$images[0]}" alt="{$row['product_name']}" class="img-thumbnail" style="width: 100px;">
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a class="nav-link" href="product-detail.php?product_id={$row['prod_id']}">
+                                                <span>{$row['product_name']} - {$row['size']}</span>
                                                 <span class="size" product_size={$row['size']}></span>
-                                            </td>
-                                            <td class="product-price">
-                                                <span>{$formatted_price} đ</span>
-                                            </td>
-                                            <td>
-                                                <i class="fa-solid fa-minus"></i>
-                                                <input type="number" class="quantity" value="{$row['quantity']}" min="1" max="{$row_max_quantity[strtolower($row['size'])]}" readonly>
-                                                <i class="fa-solid fa-plus"></i>
-                                            </td>
-                                            <td class="product-total">
-                                                <span>{$formatted_total_price} đ</span>
-                                            </td>
-                                        <tr>
+                                            </a>
+                                        </td>
+                                        <td class="product-price">
+                                            <span>{$formatted_price} đ</span>
+                                        </td>
+                                        <td class="align-items-center">
+                                            <i class="fa-solid fa-minus"></i>
+                                            <input type="number" class="quantity w-1" value="{$row['quantity']}" min="1" max="{$row_max_quantity[strtolower($row['size'])]}" readonly>
+                                            <i class="fa-solid fa-plus"></i>
+                                        </td>
+                                        <td class="product-total">
+                                            <span>{$formatted_total_price} đ</span>
+                                        </td>
+                                    <tr>
                                 CART_ITEM;
                             }
                             echo <<< CART_PRICE_1
                                         </tbody>
                                         </table>
-                                        <button class="back-to-shop" onclick="window.location.href='index.php'">Tiếp tục mua hàng</button>
+                                        <button class="btn btn-outline-secondary back-to-shop" onclick="window.location.href='index.php'">TIẾP TỤC MUA HÀNG</button>
                                     </div>
-                            <div class="cart-collaterals col">
-                                <div>
-                                    <table>
-                                        <thead>
-                                            <tr>
-                                                <th>Cộng giỏ hàng</th>
-                                            </tr>
-                                        </thead>
+                                </div>
+                            </div>
+                            </div>
+                            </div>
+                            <div class="cart-collaterals col-lg-4 col-12 mb-4 column">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h3 class="cart-title text-start">Cộng giỏ hàng</h3>
+                                        <hr>
+                                        <table class="w-100">
                                         <tbody>
                                             <tr>
-                                                <td>Tổng sản phẩm: </td>
+                                                <td class="text-start">Tổng sản phẩm: </td>
                             CART_PRICE_1;
                             if ($check === "true" && isset($_GET['size'])) {
                                 $sql2 = "SELECT quantity FROM cart WHERE username = '$customer' AND prod_id = " . $_GET['prod_id'] . " AND size = '" . $_GET['size'] . "' LIMIT 1";
@@ -116,10 +124,10 @@ require_once 'function/price.php';
                                 $total_quantity = $row2[0];
                             }
                             echo <<< CART_PRICE_2
-                                                <td class="total-quantity"><span>$total_quantity</span></td>
+                                                <td class="text-end total-quantity"><span>$total_quantity</span></td>
                                             </tr>
                                             <tr>
-                                                <td>Tổng tiền: </td>
+                                                <td class="text-start">Tổng tiền: </td>
                             CART_PRICE_2;
                             $sql3 = "SELECT cart.quantity, product.price, product.discount FROM cart JOIN product ON cart.prod_id = product.product_id ";
                             if ($check === "true" && isset($_GET['size'])) {
@@ -141,13 +149,14 @@ require_once 'function/price.php';
                             $formatted_final_price = formatPrice($final_price);
 
                             echo <<< CART_PRICE_3
-                                                <td class="final-price"><span>$formatted_final_price đ</span></td>
+                                                <td class="text-end final-price"><span>$formatted_final_price đ</span></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="checkout-button">
-                                    <input type="button" value="Đặt Hàng" class="btn btn-primary" onclick="redirectToCheckout($check);">
+
+                                <div class="checkout-button text-end m-1">
+                                    <input type="button" value="THANH TOÁN" class="btn btn-primary" onclick="redirectToCheckout($check);">
                                 </div>
                             </div>
                         CART_PRICE_3;

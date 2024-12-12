@@ -41,8 +41,7 @@ if ($row = mysqli_fetch_array($result)) {
                         for ($i = 1; $i < 4; $i++) {
                             echo '<img src="' . $img_path . '/' . $images[$i] . '" alt="Ảnh sản phẩm" class="option">';
                         }
-                    }
-                    else if ($img_count < 5) {
+                    } else if ($img_count < 5 && $img_count > 0) {
                         echo '<img src="' . $img_path . '/' . $images[0] . '" alt="Ảnh sản phẩm" class="option img--checked checked">';
                         for ($i = 1; $i < $img_count; $i++) {
                             echo '<img src="' . $img_path . '/' . $images[$i] . '" alt="Ảnh sản phẩm" class="option">';

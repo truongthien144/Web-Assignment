@@ -68,17 +68,22 @@
                         echo "No categories found.";
                     }
                     foreach ($categories as $category_name => $subcategories): ?>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link active text-uppercase fw-bold fs-6 mx-2 dropdown-toggle" href="products.php?filter=category_id&value=<?php echo htmlspecialchars($subcategories[0]['category_id']); ?>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo htmlspecialchars($category_name); ?></a>
+                        <li class="nav-item dropdown position-static">
+                            <a class="nav-link active text-uppercase fw-bold fs-6 mx-2 dropdown-toggle" href="products.php?filter=category_id&value=<?php echo htmlspecialchars($subcategories[0]['category_id']); ?>" id="navbarDropdown" role="button" aria-expanded="false">
+                                <?php echo htmlspecialchars($category_name); ?>
+                            </a>
                             <ul class="dropdown-menu bg-muted rounded-0" aria-labelledby="navbarDropdown">
                                 <?php foreach ($subcategories as $subcategory): ?>
                                     <li>
                                         <a class="dropdown-item text-uppercase" href="products.php?filter=subcategory_id&value=<?php echo htmlspecialchars($subcategory['subcategory_id']); ?>">
-                                            <?php echo htmlspecialchars($subcategory['subcategory_name']); ?> </a>
-                                    </li> <?php endforeach; ?>
+                                            <?php echo htmlspecialchars($subcategory['subcategory_name']); ?>
+                                        </a>
+                                    </li>
+                                <?php endforeach; ?>
                             </ul>
                         </li>
                     <?php endforeach; ?>
+
                     <li class="nav-item">
                         <a class="nav-link active text-uppercase fw-bold fs-6 mx-2" aria-current="page" href="products.php?filter=discount&value=1">SALE</a>
                     </li>
