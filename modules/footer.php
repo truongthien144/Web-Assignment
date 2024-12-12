@@ -54,7 +54,7 @@
                 <img src="./img/verify.png" alt="" width="136" height="52">
             </div>
             <div class="row text-center">
-                <p>© Copyright 2024 By BASKETBALLSTORE. Powered by Haravan</p>
+                <p>© Copyright 2024 By SneakerVintage. Powered by Haravan</p>
             </div>
         </div>
     </footer>

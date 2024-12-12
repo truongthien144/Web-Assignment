@@ -35,32 +35,32 @@ if (isset($_POST['btn-register'])) {
             <div class="user__detail">
                 <h3 class="text-center mb-3 text-primary">Thông tin</h3>
                 <div class="input-group mb-3">
-                    <label for="fullname" class="input-group-text col-2">Họ tên</label>
+                    <label for="fullname" class="input-group-text col-2 fw-bold">Họ tên<span class="text-danger">*</span></label>
                     <input type="text" class="form-control col-9" name="fullname" id="fullname"
                         placeholder="Nhập họ và tên">
                     <span class="form-message"></span>
                 </div>
                 <div class="input-group mb-3">
-                    <label for="email" class="input-group-text text-center col-2">Email</label>
+                    <label for="email" class="input-group-text text-center fw-bold col-2">Email<span class="text-danger">*</span></label>
                     <input type="email" class="form-control col-9" name="email" id="email"
                         placeholder="Nhập email">
                     <span class="form-message"></span>
                 </div>
                 <div class="input-group mb-3">
-                    <label for="phone-number" class="input-group-text text-center col-2">SĐT</label>
+                    <label for="phone-number" class="input-group-text text-center fw-bold col-2">SĐT<span class="text-danger">*</span></label>
                     <input type="tel" name="phone-number" id="phone-number" class="form-control col-9"
                         title="Số điện thoại bao gồm 10 chữ số bắt đầu bằng số 0"
                         placeholder="Nhập số điện thoại">
                     <span class="form-message"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="current-address" class="form-label">Chỗ ở hiện tại</label>
+                    <label for="current-address" class="form-label fw-bold">Chỗ ở hiện tại <span class="text-danger">*</span></label>
                     <textarea class="form-control" name="current-address" id="current-address"
                         placeholder="Địa chỉ-Đường-Phường-Quận/Huyện-Tỉnh/TP"></textarea>
                     <span class="form-message"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="shipping-address" class="form-label">Địa chỉ giao hàng</label>
+                    <label for="shipping-address" class="form-label fw-bold">Địa chỉ giao hàng <span class="text-danger">*</span></label>
                     <textarea class="form-control" name="shipping-address" id="shipping-address"
                         placeholder="Địa chỉ-Đường-Phường-Quận/Huyện-Tỉnh/TP"></textarea>
                     <span class="form-message"></span>
