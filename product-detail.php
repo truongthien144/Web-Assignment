@@ -51,57 +51,10 @@ if ($row = mysqli_fetch_array($result)) {
                 </div>
             </div>
         </div>
-        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
-            <div class="product-detail__info">
-                <?php echo
-                '<h2 prod_id=' . $row['product_id'] . ' class="product-detail__name">' . $row['product_name'] . '</h2>'
-                ?>
-                <div class="product-detail__price">
-                    <?php
-                    if ($row['discount'] > 0) {
-                        echo <<< PROD_PRICE
-                            <span class="product__price--discounted">$discounted_price đ</span>
-                            <span class="product__price--original">$price đ</span>
-                            <span class="product__price--sale">-$sale_percennt%</span>
-                            PROD_PRICE;
-                    } else {
-                        echo <<< PROD_PRICE
-                            <span class="product__price--discounted">$price đ</span>
-                        PROD_PRICE;
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="product-detail__size">
-                <span class="product-detail__size--label">Size: <span></span></span>
-                <?php
-                $max = 0;
-                $sizes = ['s' => $row['s'], 'm' => $row['m'], 'l' => $row['l'], 'xl' => $row['xl']];
-                foreach ($sizes as $size => $quantity) {
-                    if ($quantity == 0) {
-                        echo '<button class="product-detail__size--disabled">' . strtoupper($size) . '</button>';
-                    } else {
-                        echo '<button class="product-detail__size" data-size="' . $size . '">' . strtoupper($size) . '</button>';
-                        if ($quantity > $max) {
-                            $max = $quantity;
-                        }
-                    }
-                }
-                ?>
-                <div class="product-detail__quantity">
-                    <span class="product-detail__quantity--label">Số lượng:</span>
-                    <?php echo '<input type="number" name="quantity" id="quantity" value="1" min="1" max="' . $max . '">'; ?>
-                </div>
-            </div>
-            <div class="product-detail__purchasing">
-                <button class="btn btn-dark product-detail__buy-now" id="buy-now" data-product-id="<?php echo $product_id; ?>">Mua ngay</button>
-                <button class="btn product-detail__add-to-cart btn-light" id="add-to-cart" data-product-id="<?php echo $product_id; ?>">Thêm vào giỏ hàng</button>
-            </div>
-        </div>
     </div>
     <div class="product-detail__info">
         <?php echo
-        '<div prod_id=' . $row['product_id'] . ' class="product-detail__name">' . $row['product_name'] . '</div>'
+        '<h2 prod_id=' . $row['product_id'] . ' class="product-detail__name">' . $row['product_name'] . '</h2>'
         ?>
         <div class="product-detail__price">
             <?php
@@ -118,35 +71,37 @@ if ($row = mysqli_fetch_array($result)) {
             }
             ?>
         </div>
-    </div>
-    <div class="product-detail__size">
-        <span class="product-detail__size--label">Size: <span></span></span>
-        <?php
-        $max = 0;
-        $sizes = ['s' => $row['s'], 'm' => $row['m'], 'l' => $row['l'], 'xl' => $row['xl']];
-        foreach ($sizes as $size => $quantity) {
-            if ($quantity == 0) {
-                echo '<button class="product-detail__size--disabled">' . strtoupper($size) . '</button>';
-            } else {
-                echo '<button class="product-detail__size" data-size="' . $size . '">' . strtoupper($size) . '</button>';
-                if ($quantity > $max) {
-                    $max = $quantity;
+        <div class="product-detail__size">
+            <!-- <span class="product-detail__size--label">Size: <span></span></span> -->
+            <p class="product-detail__size--label">Size: <span></span></p>
+            <?php
+            $max = 0;
+            $sizes = ['s' => $row['s'], 'm' => $row['m'], 'l' => $row['l'], 'xl' => $row['xl']];
+            foreach ($sizes as $size => $quantity) {
+                if ($quantity == 0) {
+                    echo '<span class="product-detail__size--disabled">' . strtoupper($size) . '</span>';
+                } else {
+                    echo '<span class="product-detail__size" data-size="' . $size . '">' . strtoupper($size) . '</span>';
+                    if ($quantity > $max) {
+                        $max = $quantity;
+                    }
                 }
             }
-        }
-        ?>
-        <div class="product-detail__quantity">
-            <span class="product-detail__quantity--label">Số lượng:</span>
-            <i class="fa-solid fa-minus"></i>
-            <?php echo '<input type="number" name="quantity" id="quantity" value="1" min="1" max="' . $max . '" readonly>'; ?>
-            <i class="fa-solid fa-plus"></i>
+            ?>
+            <div class="product-detail__quantity">
+                <div class="product-detail__quantity--label my-2">Số lượng:</div>
+                <div class="rounded-3">
+                    <i class="fa-solid fa-minus"></i>
+                    <?php echo '<input type="number" name="quantity" id="quantity" value="1" min="1" max="' . $max . '" readonly>'; ?>
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+        </div>
+        <div class="product-detail__purchasing">
+            <button class="product-detail__buy-now btn btn-dark mb-0" id="buy-now" data-product-id="<?php echo $product_id; ?>">Mua ngay</button>
+            <button class="product-detail__add-to-cart btn btn-light btn-outline-secondary text-dark" id="add-to-cart" data-product-id="<?php echo $product_id; ?>">Thêm vào giỏ hàng</button>
         </div>
     </div>
-    <div class="product-detail__purchasing">
-        <button class="product-detail__buy-now" id="buy-now" data-product-id="<?php echo $product_id; ?>">Mua ngay</button>
-        <button class="product-detail__add-to-cart" id="add-to-cart" data-product-id="<?php echo $product_id; ?>">Thêm vào giỏ hàng</button>
-    </div>
-
 </div>
 <div class="gallery-zoom">
     <div class="controller controller__exit">

@@ -58,20 +58,21 @@ if ($rows = $result->fetch_array()) {
 }
 ?>
 
-<section>
-    <form class="delivery-form" method="POST">
+<section class="container mx-auto mb-5 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+    <form class="delivery-formbg-white p-4 border rounded" style="box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.35);" method="POST">
         <div class="">
-            <div class="delivery-form__input">
-                <h1>Thông tin thanh toán</h1>
+            <div class="delivery-form__input py-2">
+                <h2 class="text-center text-primary">Thông tin thanh toán</h2>
                 <div>
-                    <div>
-                        <label class="item-input-1" for="Fullname">Họ và tên*</label>
-                        <input type="text" name="Fullname" id="Fullname" value="<?php echo $Fullname; ?>" required>
+                    <div class="input-group mb-3">
+                        <label class="item-input-1 input-group-text fw-bold" for="Fullname">Họ và tên <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" name="Fullname" id="Fullname" value="<?php echo $Fullname; ?>" required>
                     </div>
-                    <div>
-                        <label class="item-input-2" for="PhoneNumber">Số điện thoại*</label>
+                    <div class="input-group mb-3">
+                        <label class="item-input-2 input-group-text fw-bold" for="PhoneNumber">Số điện thoại<span class="text-danger"> *</span></label>
                         <input
                             type="tel"
+                            class="form-control"
                             name="PhoneNumber"
                             id="PhoneNumber"
                             value="<?php echo $PhoneNumber; ?>"
@@ -85,15 +86,15 @@ if ($rows = $result->fetch_array()) {
                     </div>
                 </div>
                 <div>
-                    <div>
-                        <label class="item-input-3" for="ShippingAddress">Địa chỉ giao hàng*</label>
-                        <textarea name="ShippingAddress" id="ShippingAddress" required><?php echo $ShippingAddress; ?></textarea>
+                    <div class="mb-1">
+                        <label class="item-input-3 form-label fw-bold" for="ShippingAddress">Địa chỉ giao hàng<span class="text-danger"> *</span> </label>
+                        <textarea name="ShippingAddress" class="form-control" id="ShippingAddress" required><?php echo $ShippingAddress; ?></textarea>
                     </div>
                 </div>
             </div>
             <div class="delivery-form__information">
                 <div class="">
-                    <h1>Đơn hàng của bạn</h1>
+                    <h2 class="text-primary text-center">Đơn hàng của bạn</h2>
                     <table>
                         <thead>
                             <tr>
@@ -132,17 +133,17 @@ if ($rows = $result->fetch_array()) {
                             }
                             ?>
                             <tr>
-                                <th>
+                                <th class="summary">
                                     <span>Tổng cộng</span>
                                 </th>
-                                <td class="product-price">
+                                <td class="product-price-final fw-bold">
                                     <span><?php echo formatPrice($total_price); ?> đ</span>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <div>
-                        <label for="payment_method">Phương thức thanh toán</label>
+                        <label for="payment_method" class="text-primary fs-5">Phương thức thanh toán</label>
                         <div>
                             <input type="radio" id="cod" name="payment_method" value="cod" checked>
                             <label for="cod">Thanh toán khi nhận hàng (COD)</label>
@@ -150,12 +151,12 @@ if ($rows = $result->fetch_array()) {
                         <div>
                             <input type="radio" id="qr" name="payment_method" value="qr">
                             <label for="qr">Thanh toán qua QR code</label>
-                            <img src="img/qr.png" alt="QR code">
+                            <img src="img/qr.png" alt="QR code" class="mx-auto">
                         </div>
                     </div>
                 </div>
-                <div class="delivery-form__button">
-                    <button name="" type="submit">Đặt hàng</button>
+                <div class="delivery-form__button d-flex justify-content-center mt-3">
+                    <button name="" type="submit" class="btn btn-dark">Đặt hàng</button>
                 </div>
             </div>
         </div>
