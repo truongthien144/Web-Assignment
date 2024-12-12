@@ -94,15 +94,15 @@ CREATE TABLE IF NOT EXISTS `order_detail` (
 ) ENGINE=InnoDB DEFAULT CHARSET=ascii COLLATE=ascii_bin COMMENT='order details';
 
 INSERT INTO `order_detail` (`order_id`, `prod_id`, `size`, `price`, `quantity`) VALUES
-(1, 'AV00115', 'l' , 390000, 1),
-(1, 'AV00117', 'xl', 290000, 1),
-(2, 'A6T006', 'm', 792000, 1),
-(2, 'AV00202', 's', 290000, 1),
-(2, 'AV00158', 's', 290000, 1),
-(3, 'AV00121', 'm', 345000, 1),
-(3, 'AV00189', 'l', 290000, 1),
-(3, 'AV00115', 'l', 390000, 1),
-(4, 'AV00172', 'l', 290000, 1);
+(1, 'AV00115', 'L' , 390000, 1),
+(1, 'AV00117', 'XL', 290000, 1),
+(2, 'A6T006', 'M', 792000, 1),
+(2, 'AV00202', 'S', 290000, 1),
+(2, 'AV00158', 'S', 290000, 1),
+(3, 'AV00121', 'M', 345000, 1),
+(3, 'AV00189', 'L', 290000, 1),
+(3, 'AV00115', 'L', 390000, 1),
+(4, 'AV00172', 'L', 290000, 1);
 
 -- Product Table
 DROP TABLE IF EXISTS `product`;
