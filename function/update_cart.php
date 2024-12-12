@@ -15,6 +15,6 @@ function update_number($customer, $conn)
 }
 function delete_prod($customer, $conn)
 {
-    $sql2 = "DELETE FROM cart WHERE username='" . $customer . "' AND prod_id='" . $_POST['prod_id'] . "' AND size='" . $_POST['size'] . "'";
+    $sql2 = "DELETE FROM cart WHERE username = '" . $customer . "' AND prod_id = '" . $_POST['prod_id'] . "' AND size = '" . $_POST['size'] . "'";
     mysqli_query($conn, $sql2);
 }
