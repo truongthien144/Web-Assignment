@@ -1,0 +1,55 @@
+.delivery-form__information {
+    width: 100%;
+}
+
+.delivery-form__information table {
+    width: 100%;
+    text-align: center;
+    margin: 12px auto;
+    min-height: 150px;
+}
+
+.delivery-form__information thead, .delivery-form__information tfoot td {
+    text-transform: capitalize;
+}
+
+.delivery-form__information table tbody {
+    display: block;
+    max-height: 32vh;
+    overflow: auto;
+}
+
+.delivery-form__information thead,
+.delivery-form__information tbody tr, tfoot {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.delivery-form__information table thead {
+    padding: 6px 0;
+    margin-bottom: 5px;
+    border-bottom: 1px solid rgb(196, 193, 193);
+}
+
+
+.delivery-form__information table tr td.product-price-final,.summary {
+    padding: 2px 0;
+    margin-top: 10px;
+    border-top: 1px solid rgb(196, 193, 193);
+}
+
+.delivery-form__information table tr th:first-child,
+.delivery-form__information table tr td:first-child {
+    text-align: left;
+    white-space: nowrap;
+}
+
+.delivery-form__information table tr th:last-child,
+.delivery-form__information table tr td:last-child{
+    text-align: right;
+}
+
+.delivery-form__information table tr td {
+    padding: 4px 0;
+}
