@@ -7,8 +7,8 @@ loadHeader();
         <div class="div-text">
             <h1 class="text-center my-4">Danh sách hóa đơn</h1>
         </div>
-        <table class="table table-striped table-bordered">
-            <tr class="text">
+        <table class="table table-bordered table-hover">
+            <tr class="text table-secondary">
                 <td class="text-center fw-bold">ID Hóa đơn</td>
                 <td class="text-center fw-bold">Khách hàng</td>
                 <td class="text-center fw-bold">Người nhận hàng</td>
@@ -34,9 +34,9 @@ loadHeader();
             ?>
         </table>
     </div>
-    <div class="order-detail-info">
+    <div class="order-detail-info bg-light">
         <div class="div-text">
-            <h3 class="text-center my-4">Chi tiết hoá đơn</h3>
+            <h3 class="text-center my-2 p-2">Chi tiết hoá đơn</h3>
         </div>
         <div class="header-cthd"></div>
     </div>

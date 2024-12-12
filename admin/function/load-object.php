@@ -42,7 +42,7 @@ function load_customer($row)
 function load_order($row)
 {
     echo '
-        <tr class="text text1 text2" id_order="' . $row['order_id'] . '">
+        <tr class="text text1 text2" id_order="' . $row['order_id'] . '" style="cursor: pointer">
             <td class="text-center">' . $row['order_id'] . '</td>
             <td class="text-left">' . $row['username'] . '</td>
             <td class="text-left">' . $row['fullname'] . '</td>
