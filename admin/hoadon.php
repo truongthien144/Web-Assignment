@@ -9,14 +9,14 @@ loadHeader();
         </div>
         <table class="table table-striped table-bordered">
             <tr class="text">
-                <td class="text-center">ID Hóa đơn</td>
-                <td class="text-center">Khách hàng</td>
-                <td class="text-center">Người nhận hàng</td>
-                <td class="text-center">SĐT nhận hàng</td>
-                <td class="text-center">Địa chỉ nhận hàng</td>
-                <td class="text-center">Số lượng</td>
-                <td class="text-center">Tổng tiền</td>
-                <td class="text-center">Ngày thanh toán</td>
+                <td class="text-center fw-bold">ID Hóa đơn</td>
+                <td class="text-center fw-bold">Khách hàng</td>
+                <td class="text-center fw-bold">Người nhận hàng</td>
+                <td class="text-center fw-bold">SĐT nhận hàng</td>
+                <td class="text-center fw-bold">Địa chỉ nhận hàng</td>
+                <td class="text-center fw-bold">Số lượng</td>
+                <td class="text-center fw-bold">Tổng tiền</td>
+                <td class="text-center fw-bold">Ngày thanh toán</td>
             </tr>
             <?php
 require_once '../connect_db.php';
