@@ -69,16 +69,11 @@
                     }
                     foreach ($categories as $category_name => $subcategories): ?>
                         <li class="nav-item dropdown">
-                            <a class="nav-link active text-uppercase fw-bold fs-6 mx-2"
-                                aria-current="page"
-                                href="products.php?filter=category_id&value=<?php echo htmlspecialchars($subcategories[0]['category_id']); ?>">
-                                <?php echo htmlspecialchars($category_name); ?>
-                            </a>
-                            <a class="nav-link active dropdown-toggle mx-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"></a>
+                            <a class="nav-link active text-uppercase fw-bold fs-6 mx-2 dropdown-toggle" href="products.php?filter=category_id&value=<?php echo htmlspecialchars($subcategories[0]['category_id']); ?>" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"><?php echo htmlspecialchars($category_name); ?></a>
                             <ul class="dropdown-menu bg-muted rounded-0" aria-labelledby="navbarDropdown">
                                 <?php foreach ($subcategories as $subcategory): ?>
                                     <li>
-                                        <a class="dropdown-item text-uppercase mx-2" href="products.php?filter=subcategory_id&value=<?php echo htmlspecialchars($subcategory['subcategory_id']); ?>">
+                                        <a class="dropdown-item text-uppercase" href="products.php?filter=subcategory_id&value=<?php echo htmlspecialchars($subcategory['subcategory_id']); ?>">
                                             <?php echo htmlspecialchars($subcategory['subcategory_name']); ?> </a>
                                     </li> <?php endforeach; ?>
                             </ul>

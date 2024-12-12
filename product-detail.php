@@ -36,9 +36,15 @@ if ($row = mysqli_fetch_array($result)) {
                 <div class="thumbnails">
                     <?php
                     $img_count = count($images);
-                    if ($img_count > 0) {
+                    if ($img_count > 5) {
                         echo '<img src="' . $img_path . '/' . $images[0] . '" alt="Ảnh sản phẩm" class="option img--checked checked">';
                         for ($i = 1; $i < 4; $i++) {
+                            echo '<img src="' . $img_path . '/' . $images[$i] . '" alt="Ảnh sản phẩm" class="option">';
+                        }
+                    }
+                    else if ($img_count < 5) {
+                        echo '<img src="' . $img_path . '/' . $images[0] . '" alt="Ảnh sản phẩm" class="option img--checked checked">';
+                        for ($i = 1; $i < $img_count; $i++) {
                             echo '<img src="' . $img_path . '/' . $images[$i] . '" alt="Ảnh sản phẩm" class="option">';
                         }
                     }
