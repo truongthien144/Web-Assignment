@@ -4,21 +4,26 @@ require_once '../function/image.php';
 
 function load_product($row)
 {
-    $directory = "../images/products/" . $row['product_id'];
+    $directory = "../img/product/" . $row['product_id'];
+    if (!file_exists($directory)) {
+        $directory = "../img/product/DEFAULT";
+    }
+    if (empty($directory)) {
+        $hinh = getImages('img/product/DEFAULT');
+    }
     $hinh = getImages($directory);
-    $calc = getCalcUnit($row['calc_unit']);
-    $price = formatPrice($row['promo_price']);
+    $price = $row['price'];
     $price = $price == 0 ? '' : $price;
+    $max_quantity = $row['s'] + $row['m'] + $row['l'] + $row['xl'];
     echo '
         <tr class="text text2">
-            <td class="text-center">' . $row['cate_name'] . '</td>
-            <td class="text-center">' . $row['prod_name'] . '</td>
-            <td class="text-center"><img class="hinhanh_sp" src="' . $directory . '/' . $hinh[0] . '" alt=""></td>
+            <td class="text-center">' . $row['product_id'] . '</td>
+            <td class="text-center">' . $row['product_name'] . '</td>
+            <td class="text-center">' . $row['subcategory_name'] . '</td>
+            <td class="text-center"><img class="hinhanh_sp img-thumbnail" src="' . $directory . '/' . $hinh[0] . '" alt=""></td>
             <td class="text-center">' . formatPrice($row['price']) . 'đ</td>
-            <td class="text-center">' . $row['promo_code'] . '</td>
-            <td class="text-center">' . $price . $calc . '</td>
-            <td class="text-center">' . $row['quantity'] . '</td>
-            <td class="text-center">' . $row['date_added'] . '</td>
+            <td class="text-center">' . formatPrice($row['discount']) . '</td>
+            <td class="text-center">' . $max_quantity . '</td>
         </tr>';
 }
 
