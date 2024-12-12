@@ -72,6 +72,7 @@ function onChangeValue(item) {
     var quantity_col = item.parentElement;
     var price = quantity_col.previousElementSibling.children[0].innerHTML;
     price = price.replaceAll(".", "").replaceAll("đ", "");
+    console.log(price);
     var new_price = so_luong * price;
     quantity_col.nextElementSibling.children[0].innerHTML = new_price.toLocaleString("de-DE") + "đ";
     var tong_slsp = totalItem(quantity);
@@ -79,8 +80,9 @@ function onChangeValue(item) {
     var tong_tien = totalPrice(total_price);
 
     final_price.innerHTML = tong_tien.toLocaleString("de-DE") + "đ";
-    id = item.parentElement.parentElement.getAttribute("product_id");
-    size1 = item.parentElement.parentElement.children[0].children[2].getAttribute("product_size");
+    id = quantity_col.parentElement.getAttribute("product_id");
+    size1 =
+        quantity_col.parentElement.children[2].children[0].children[1].getAttribute("product_size");
     update_quantity(id, size1, so_luong);
 }
 
