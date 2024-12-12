@@ -1,8 +1,8 @@
 <?php
 require_once 'site.php';
 loadHeader();
-echo '<link rel="stylesheet" href="style/product-detail.css">
-    <script defer type="text/javascript" src="js/product-detail.js"></script>';
+echo '<link rel="stylesheet" href="style/delivery.css">
+    <script defer type="text/javascript" src="js/delivery.js"></script>';
 loadMenu();
 require_once 'function/price.php';
 require 'connect_db.php';
