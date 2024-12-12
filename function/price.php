@@ -1,7 +1,12 @@
 <?php
-function getSalePercent($price, $discounted_price)
+function getSalePercent($price, $discount)
 {
-    return round(($price - $discounted_price) / $price * 100);
+    return round($discount / $price * 100);
+}
+
+function getDiscountedPrice($price, $discount)
+{
+    return $price - $discount;
 }
 
 function formatPrice($number)

@@ -11,10 +11,12 @@ if (empty($_GET['filter']) || empty($_GET['value'])) {
 }
 $filter = $_GET['filter'];
 $value = $_GET['value'];
+$size = !empty($_GET['size']) ? $_GET['size'] : '';
 $field = !empty($_GET['field']) ? $_GET['field'] : '';
 $sort = !empty($_GET['sort']) ? $_GET['sort'] : '';
 $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
 ?>
+
 
 <section class="products">
     <div class="products-top">
@@ -24,18 +26,25 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
             <span class="subkeyword"></span>
             <span class="quantity"></span>
         </div>
-        <form class="products-sort-by" method="GET" onsubmit="SortProductsPage();">
+        <form class="products-sort-by" method="GET" onsubmit="sortProducts();">
             <input type="hidden" name="filter" value="<?php echo $filter; ?>">
             <input type="hidden" name="value" value="<?php echo $value; ?>">
+            <select name="size" id="size">
+                <option value="">Size</option>
+                <option value="s" <?php if ($size === 's') echo 'selected'; ?>>S</option>
+                <option value="m" <?php if ($size === 'm') echo 'selected'; ?>>M</option>
+                <option value="l" <?php if ($size === 'l') echo 'selected'; ?>>L</option>
+                <option value="xl" <?php if ($size === 'xl') echo 'selected'; ?>>XL</option>
+            </select>
             <input type="hidden" name="field" value="<?php echo $field; ?>">
             <input type="hidden" name="sort" value=<?php echo $sort; ?>>
             <select id="order">
                 <option value="">Sắp xếp</option>
-                <option value="product name" <?php if ($field === 'productName') echo 'selected'; ?>>Tên sản phẩm</option>
-                <option value="price asc" <?php if ($field === 'Price' && $sort === 'asc') echo 'selected'; ?>>Giá tăng dần</option>
-                <option value="price desc" <?php if ($field === 'Price' && $sort === 'desc') echo 'selected'; ?>>Giá giảm dần</option>
+                <option value="product_name asc" <?php if ($field === 'product_name' && $sort === 'asc') echo 'selected'; ?>>Tên sản phẩm</option>
+                <option value="price asc" <?php if ($field === 'price' && $sort === 'asc') echo 'selected'; ?>>Giá tăng dần</option>
+                <option value="price desc" <?php if ($field === 'price' && $sort === 'desc') echo 'selected'; ?>>Giá giảm dần</option>
             </select>
-            <button type="submit" class="btn btn-info">Lọc</button>
+            <button type="submit" class="btn btn-primary">Lọc</button>
             <input type="hidden" name="page" value=<?php echo $current_page; ?>>
         </form>
     </div>
@@ -43,34 +52,46 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
         <?php
         require 'connect_db.php';
         switch ($filter) {
-            case 'prod_name':
-                $where = "WHERE UPPER(productName) LIKE UPPER('%$value%')";
+            case 'product_name':
                 $keyword = $value;
+                $subkeyword = '';
+
+                $where = "WHERE UPPER($filter) LIKE UPPER('%$value%')";
                 break;
             case 'category_id':
                 $sql = "SELECT category_name FROM category WHERE $filter = '$value' LIMIT 1";
                 $result = $conn->query($sql);
                 $keyword = $result->fetch_array()[0];
-                $where = "WHERE Category_id = '$value'";
+                $subkeyword = '';
+
+                $where = "WHERE subcategory_id IN (SELECT subcategory_id FROM subcategory WHERE $filter = '$value')";
                 break;
             case 'subcategory_id':
                 $sql = "SELECT subcategory_name FROM subcategory WHERE $filter = '$value' LIMIT 1";
                 $result = $conn->query($sql);
                 $subkeyword = $result->fetch_array()[0];
+
                 $sql = "SELECT category_name FROM category WHERE category_id = (SELECT category_id FROM subcategory WHERE $filter = '$value')";
                 $result = $conn->query($sql);
                 $keyword = $result->fetch_array()[0];
-                $where = "WHERE Subcategory_id = '$value'";
+
+                $where = "WHERE $filter = '$value'";
                 break;
-            case 'sale':
-                $where = "WHERE Discount > 0";
+            case 'discount':
                 $keyword = 'Khuyến mãi';
+                $subkeyword = '';
+
+                $where = "WHERE $filter > 0";
                 break;
             default:
-                $where = "WHERE 1";
+                $where = "WHERE 1=1";
                 break;
         }
-        $sql = "SELECT product_id, Category_id, Subcategory_id, productName, Stock, Price, Discount, PriceWithDiscount FROM product" . $where;
+        $sql = "SELECT * FROM product as A JOIN size as C ON A.product_id = C.prod_id ";
+        $sql .= $where;
+        if (!empty($size)) {
+            $sql .= " AND C.$size > 0";
+        }
         $result = $conn->query($sql);
         $total_products = $result->num_rows;
         $products_per_page = 12;
@@ -89,33 +110,45 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
         let subkeywordSpan = document.querySelector('.subkeyword');
         let quantity = document.querySelector('.quantity');
 
-        if ('$filter' === 'prod_name') {
+        if ('$filter' === 'product_name') {
             phrase.innerHTML = "Kết quả tìm kiếm";
-            keywordsSpan.innerHTML = "'$keywords'";
+            keywordSpan.innerHTML = "'$keyword'";
             } else {
-                keywordsSpan.innerHTML = "$keywords > $subkeywords";
+                if ('$subkeyword' !== '') {
+                    keywordSpan.innerHTML = "$keyword > $subkeyword";
+                } else {
+                    keywordSpan.innerHTML = "$keyword";
+                }
             }
-            quantity.innerHTML = ": " + $num_rows + " sản phẩm";
+            quantity.innerHTML = ": " + $total_products + " sản phẩm";
         </script>
         FILTER_RESULT;
         $result = $conn->query($sql);
+        if (!$result) {
+            echo $conn->error;
+        }
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_array()) {
                 $img_path = 'img/product/' . $row['product_id'];
+                if (!file_exists($img_path)) {
+                    $img_path = 'img/product/DEFAULT';
+                }
                 $images = getImages($img_path);
+                if (empty($images)) {
+                    $images = getImages('img/product/DEFAULT');
+                }
                 echo <<< PROD_AVATAR_NAME
                     <div class="product">
                     <div class="product__avatar" id="$row[0]">
-                    <img src="$img_path/$images[0]" class="product__avatar--front">
-                    <img src="$img_path/$images[1]" class="product__avatar--back">
-                </div>
-                <div class="product__name" title="$row[3]">$row[3]</div>
+                        <img src="$img_path/$images[0]" class="product__avatar">
+                    </div>
+                    <div class="product__name" title="$row[1]">$row[1]</div>
+                    </div>
                 PROD_AVATAR_NAME;
-
-                $price = formatPrice($row['Price']);
-                if ($row['Discount'] > 0) {
-                    $discounted_price = formatPrice($row['PriceWithDiscount']);
-                    $sale_percennt = getSalePercent($row['Price'], $row['PriceWithDiscount']);
+                $price = formatPrice($row['price']);
+                if ($row['discount'] > 0) {
+                    $discounted_price = formatPrice(getDiscountedPrice($row['price'], $row['discount']));
+                    $sale_percennt = getSalePercent($row['price'], $row['discount']);
                     echo <<< PROD_PRICE
                         <div class="product__price">
                         <span class="product__price--discounted">$discounted_price đ</span>
@@ -132,7 +165,6 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
                 }
             }
         }
-
         ?>
     </div>
     <div class="products-bottom">
@@ -141,8 +173,8 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
         $min = $current_page - $range;
         $max = $current_page + $range;
         $i = $min > 1 ? $min : 1;
-        if ($max > $num_pages) {
-            $max = $num_pages;
+        if ($max > $total_pages) {
+            $max = $total_pages;
         }
 
         echo "<span data-value='1'><i class='fa-solid fa-angles-left'></i></span>";
@@ -156,7 +188,7 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
             echo "<span data-value='$i'>$i</span>";
             $i++;
         }
-        echo "<span data-value='$num_pages'><i class='fa-solid fa-angles-right'></i></span>";
+        echo "<span data-value='$total_pages'><i class='fa-solid fa-angles-right'></i></span>";
         ?>
     </div>
 </section>

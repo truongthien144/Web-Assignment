@@ -1,20 +1,20 @@
 <?php
 session_start();
 require "../connect_db.php";
-$kh = $_SESSION['username'];
+$customer = $_SESSION['username'];
 if ($_POST['U'] == 'update') {
-	update_number($kh, $conn);
+    update_number($customer, $conn);
 }
 if ($_POST['U'] == 'delete') {
-	delete_sp($kh, $conn);
+    delete_prod($customer, $conn);
 }
-function update_number($kh, $conn)
+function update_number($customer, $conn)
 {
-	$sql1 = "UPDATE cart SET quantity='" . $_POST['quantity'] . "' where username='" . $kh . "' AND prod_id='" . $_POST['pro_id'] . "' AND size='" . $_POST['size'] . "' ";
-	mysqli_query($conn, $sql1);
+    $sql1 = "UPDATE cart SET quantity='" . $_POST['quantity'] . "' where username='" . $customer . "' AND prod_id='" . $_POST['prod_id'] . "' AND size='" . $_POST['size'] . "' ";
+    mysqli_query($conn, $sql1);
 }
-function delete_sp($kh, $conn)
+function delete_prod($customer, $conn)
 {
-	$sql2 = "DELETE FROM cart WHERE username='" . $kh . "' AND prod_id='" . $_POST['pro_id'] . "' AND size='" . $_POST['size'] . "'";
-	mysqli_query($conn, $sql2);
+    $sql2 = "DELETE FROM cart WHERE username='" . $customer . "' AND prod_id='" . $_POST['prod_id'] . "' AND size='" . $_POST['size'] . "'";
+    mysqli_query($conn, $sql2);
 }
