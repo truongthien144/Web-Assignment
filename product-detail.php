@@ -81,7 +81,9 @@ if ($row = mysqli_fetch_array($result)) {
         ?>
         <div class="product-detail__quantity">
             <span class="product-detail__quantity--label">Số lượng:</span>
-            <?php echo '<input type="number" name="quantity" id="quantity" value="1" min="1" max="' . $max . '">'; ?>
+            <i class="fa-solid fa-minus"></i>
+            <?php echo '<input type="number" name="quantity" id="quantity" value="1" min="1" max="' . $max . '" readonly>'; ?>
+            <i class="fa-solid fa-plus"></i>
         </div>
     </div>
     <div class="product-detail__purchasing">
