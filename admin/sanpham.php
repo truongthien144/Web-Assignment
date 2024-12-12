@@ -3,12 +3,12 @@ require_once 'site.php';
 require_once 'function/load-object.php';
 loadHeader();
 ?>
-<div class="container" class="vh-100">
+<div class="container" class="mt-4">
     <div class="div-text">
         <h1 class="text-center my-4">Danh sách sản phẩm</h1>
     </div>
-    <table class="table table-striped table-bordered">
-        <div>
+    <table id="productTable" class="table table-striped table-bordered">
+        <thead>
             <tr class="text">
                 <th class="text-center">Mã sản phẩm</th>
                 <th class="text-center">Tên sản phẩm</th>
@@ -18,6 +18,8 @@ loadHeader();
                 <th class="text-center">Số tiền được giảm</th>
                 <th class="text-center">Số lượng</th>
             </tr>
+        </thead>
+        <tbody>
             <?php
             require_once '../connect_db.php';
             require_once 'function/process_search.php';
@@ -32,8 +34,27 @@ loadHeader();
                 }
             }
             ?>
-        </div>
+        </tbody>
     </table>
+    <script>
+        $(document).ready(function() {
+            $('#productTable').DataTable({
+                "pageLength": 10,
+                "lengthMenu": [10, 20, 30],
+                "ordering": true,
+                "searching": false,
+                language: {
+                    lengthMenu: "Hiển thị _MENU_ sản phẩm mỗi trang",
+                    info: "Trang _PAGE_ trên _PAGES_",
+                    infoEmpty: "Không tìm thấy sản phẩm",
+                    paginate: {
+                        previous: "<<",
+                        next: ">>",
+                    }
+                },
+            });
+        });
+    </script>
 </div>
 <?php
 loadFooter();

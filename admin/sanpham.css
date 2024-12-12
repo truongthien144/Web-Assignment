@@ -1,0 +1,8 @@
+table#productTable {
+    clear: both;
+    margin-top: 20px !important;
+    margin-bottom: 10px !important;
+    max-width: none !important;
+    border-collapse: collapse !important;
+    border-spacing: 0;
+}

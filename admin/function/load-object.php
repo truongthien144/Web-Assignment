@@ -20,7 +20,7 @@ function load_product($row)
             <td class="text-center">' . $row['product_id'] . '</td>
             <td class="text-center">' . $row['product_name'] . '</td>
             <td class="text-center">' . $row['subcategory_name'] . '</td>
-            <td class="text-center"><img class="hinhanh_sp img-thumbnail" src="' . $directory . '/' . $hinh[0] . '" alt=""></td>
+            <td class="text-center"><img style="max-height:50px;" class="hinhanh_sp img-thumbnail" src="' . $directory . '/' . $hinh[0] . '" alt=""></td>
             <td class="text-center">' . formatPrice($row['price']) . 'đ</td>
             <td class="text-center">' . formatPrice($row['discount']) . '</td>
             <td class="text-center">' . $max_quantity . '</td>
