@@ -78,6 +78,25 @@ sizes.forEach(function (item) {
     };
 });
 
+let plus = document.querySelector(".fa-plus");
+let minus = document.querySelector(".fa-minus");
+
+plus.onclick = function () {
+    soluonginput = parseInt(quantityInput.value);
+    soluonginputmax = parseInt(quantityInput.max);
+    if (soluonginput < soluonginputmax) {
+        quantityInput.value++;
+    }
+};
+
+minus.onclick = function () {
+    soluonginput = parseInt(quantityInput.value);
+    soluonginputmax = parseInt(quantityInput.max);
+    if (soluonginput > 1) {
+        quantityInput.value--;
+    }
+};
+
 let tab_header = document.querySelectorAll(".tab__header > span");
 let tab_content = document.querySelectorAll(".tab__content > div");
 
