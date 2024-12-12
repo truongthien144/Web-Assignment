@@ -18,21 +18,21 @@ loadHeader();
             <th class="text-center">Xoá</th>
         </tr>
         <?php
-// function hienthi() {
-// 	require_once '../connect_db.php';
-// 	require_once 'function/process_search.php';
-// 	if (isset($_GET['key'])) {
-// 		$key = $_GET['key'];
-// 		tim_magiamgia($key);
-// 	} else {
-// 		$sql = "SELECT *FROM promotion";
-// 		$query = mysqli_query($conn, $sql);
-// 		while ($row = mysqli_fetch_array($query)) {
-// 			load_promo($row);
-// 		}
-// 	}
-// }
-// hienthi();
+function hienthi() {
+	require_once '../connect_db.php';
+	require_once 'function/process_search.php';
+	if (isset($_GET['key'])) {
+		$key = $_GET['key'];
+		tim_magiamgia($key);
+	} else {
+		$sql = "SELECT *FROM promotion";
+		$query = mysqli_query($conn, $sql);
+		while ($row = mysqli_fetch_array($query)) {
+			load_promo($row);
+		}
+	}
+}
+hienthi();
 ?>
     </table>
 <!---bang insert-->
