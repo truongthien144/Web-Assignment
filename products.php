@@ -18,19 +18,19 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
 ?>
 
 
-<section class="products">
-    <div class="products-top">
+<section class="products container my-2">
+    <div class="products-top d-flex justify-content-between align-items-end fw-bold fs-5">
         <div class="products-category">
             <span class="filter-phrase"></span>
             <span class="keyword"></span>
             <span class="subkeyword"></span>
             <span class="quantity"></span>
         </div>
-        <form class="products-sort-by" method="GET" onsubmit="sortProducts();">
+        <form class="products-sort-by fs-6 my-auto " method="GET" onsubmit="sortProducts();">
             <input type="hidden" name="filter" value="<?php echo $filter; ?>">
             <input type="hidden" name="value" value="<?php echo $value; ?>">
-            <select name="size" id="size">
-                <option value="">Size</option>
+            <select name="size" id="size" class="rounded-1 pt-1 pb-2 mb-0">
+                <option value="" selected disabled hidden>Size</option>
                 <option value="s" <?php if ($size === 's') echo 'selected'; ?>>S</option>
                 <option value="m" <?php if ($size === 'm') echo 'selected'; ?>>M</option>
                 <option value="l" <?php if ($size === 'l') echo 'selected'; ?>>L</option>
@@ -38,13 +38,15 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
             </select>
             <input type="hidden" name="field" value="<?php echo $field; ?>">
             <input type="hidden" name="sort" value=<?php echo $sort; ?>>
-            <select id="order">
-                <option value="">Sắp xếp</option>
+            <select id="order" class="rounded-1 pt-1 pb-2">
+                <option  value="" selected disabled hidden>Sắp xếp</option>
                 <option value="product_name asc" <?php if ($field === 'product_name' && $sort === 'asc') echo 'selected'; ?>>Tên sản phẩm</option>
                 <option value="price asc" <?php if ($field === 'price' && $sort === 'asc') echo 'selected'; ?>>Giá tăng dần</option>
                 <option value="price desc" <?php if ($field === 'price' && $sort === 'desc') echo 'selected'; ?>>Giá giảm dần</option>
             </select>
-            <button type="submit" class="btn btn-primary">Lọc</button>
+            <button type="submit" class="btn-filter btn btn-secondary fs-6">
+                Lọc
+            </button>
             <input type="hidden" name="page" value=<?php echo $current_page; ?>>
         </form>
     </div>
@@ -143,14 +145,14 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
                         <img src="$img_path/$images[0]" class="product__avatar">
                     </div>
                     <div class="product__name" title="$row[1]">$row[1]</div>
-                    </div>
+                    
                 PROD_AVATAR_NAME;
                 $price = formatPrice($row['price']);
                 if ($row['discount'] > 0) {
                     $discounted_price = formatPrice(getDiscountedPrice($row['price'], $row['discount']));
                     $sale_percennt = getSalePercent($row['price'], $row['discount']);
                     echo <<< PROD_PRICE
-                        <div class="product__price">
+                    <div class="product__price">
                         <span class="product__price--discounted">$discounted_price đ</span>
                         <span class="product__price--original">$price đ</span>
                         <span class="product__price--sale">-$sale_percennt%</span>
@@ -161,7 +163,9 @@ $current_page = !empty($_GET['page']) && $_GET['page'] > 0 ? $_GET['page'] : 1;
                     <div class="product__price">
                     <span class="product__price--discounted">$price đ</span>
                     </div>
+                    </div>
                 PROD_PRICE;
+                
                 }
             }
         }
