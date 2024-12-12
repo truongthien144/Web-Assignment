@@ -75,9 +75,9 @@
                     <li class="nav-item">
                         <a class="nav-link active text-uppercase fs-6 fw-bold mx-2" aria-current="page" href="hoadon.php">Hóa đơn</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a class="nav-link active text-uppercase fs-6 fw-bold mx-2" aria-current="page" href="magiamgia.php">Mã giảm giá</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
         </div>

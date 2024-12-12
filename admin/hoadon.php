@@ -19,18 +19,18 @@ loadHeader();
                 <td class="text-center">Ngày thanh toán</td>
             </tr>
             <?php
-// require_once '../connect_db.php';
-// require_once 'function/process_search.php';
-// if (isset($_GET['key'])) {
-// 	$key = $_GET['key'];
-// 	tim_hoadon($key);
-// } else {
-// 	$sql = "SELECT `order`.* ,`quantity` *`price` AS 'tien',SUM('tien') ,SUM(`quantity`) AS 'soluong' FROM `order-detail` ,`order` where `order-detail`.`order_id`=`order`.`order_id` GROUP BY `order-detail`.`order_id`";
-// 	$query = mysqli_query($conn, $sql);
-// 	while ($row = mysqli_fetch_array($query)) {
-// 		load_order($row);
-// 	}
-// }
+require_once '../connect_db.php';
+require_once 'function/process_search.php';
+if (isset($_GET['key'])) {
+	$key = $_GET['key'];
+	tim_hoadon($key);
+} else {
+	$sql = "SELECT `order`.* ,`quantity` *`price` AS 'tien',SUM('tien') ,SUM(`quantity`) AS 'soluong' FROM `order_detail` ,`order` where `order_detail`.`order_id`=`order`.`order_id` GROUP BY `order_detail`.`order_id`";
+	$query = mysqli_query($conn, $sql);
+	while ($row = mysqli_fetch_array($query)) {
+		load_order($row);
+	}
+}
 ?>
         </table>
     </div>
@@ -41,7 +41,7 @@ loadHeader();
         <div class="heder-cthd"></div>
     </div>
 </div>
-<!-- <script src="js/hoadon_admin.js"></script> -->
+<script src="js/hoadon_admin.js"></script>
 <?php
 loadFooter();
 ?>
