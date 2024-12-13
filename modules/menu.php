@@ -94,4 +94,4 @@
             </div>
         </div>
     </nav>
-    <div>
+    <div class="main-content-wrapper">

@@ -35,3 +35,21 @@ if ($valid) {
     <link rel="stylesheet" href="./style/footer.css">
     <link rel="stylesheet" href="./style/menu.css">
     <script defer src="./js/menu.js"></script>
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-content-wrapper {
+            flex: 1 0 auto;
+        }
+
+        footer {
+            flex-shrink: 0;
+        }
+    </style>
+</head>

@@ -151,7 +151,7 @@ if ($rows = $result->fetch_array()) {
                         <div>
                             <input type="radio" id="qr" name="payment_method" value="qr">
                             <label for="qr">Thanh toán qua QR code</label>
-                            <img src="img/qr.png" alt="QR code" class="mx-auto">
+                            <img src="img/qr.png" alt="QR code" class="mx-auto" style="max-width: 80%;">
                         </div>
                     </div>
                 </div>

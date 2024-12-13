@@ -36,7 +36,7 @@ function removeItem(x) {
     var confirmation = confirm("Bạn có chắc chắn muốn xóa sản phẩm này khỏi giỏ hàng không?");
     if (confirmation == true) {
         var tr = x.parentElement.parentElement;
-        var item_quantity = tr.children[4].children[1].value;
+        var item_quantity = tr.children[4].children[0].children[1].value;
         var prod_total = tr.children[5].children[0].innerHTML
             .replaceAll(".", "")
             .replaceAll("đ", "");
@@ -66,13 +66,25 @@ function deleteItem(id, size) {
     xhttp.send("U=delete&prod_id=" + id + "&size=" + size);
 }
 
+quantity.forEach(function (item) {
+    const max = parseInt(item.max);
+    item.addEventListener("input", () => {
+        value = parseInt(item.value);
+        if (value > max) {
+            item.value = max;
+            showWarning(item);
+        } else {
+            hideWarning(item);
+        }
+        onChangeValue(item);
+    });
+});
+
 function onChangeValue(item) {
-    console.log(item.value);
     var so_luong = parseInt(item.value);
-    var quantity_col = item.parentElement;
+    var quantity_col = item.parentElement.parentElement;
     var price = quantity_col.previousElementSibling.children[0].innerHTML;
     price = price.replaceAll(".", "").replaceAll("đ", "");
-    console.log(price);
     var new_price = so_luong * price;
     quantity_col.nextElementSibling.children[0].innerHTML = new_price.toLocaleString("de-DE") + "đ";
     var tong_slsp = totalItem(quantity);
@@ -121,6 +133,9 @@ plus.forEach((item) => {
         if (soluonginput < soluonginputmax) {
             quantityInput.value++;
             onChangeValue(quantityInput);
+            hideWarning(quantityInput);
+        } else {
+            showWarning(quantityInput);
         }
     };
 });
@@ -128,11 +143,24 @@ plus.forEach((item) => {
 minus.forEach((item) => {
     item.onclick = function () {
         let quantityInput = item.nextElementSibling;
+        hideWarning(quantityInput);
         soluonginput = parseInt(quantityInput.value);
         soluonginputmax = parseInt(quantityInput.max);
         if (soluonginput > 1) {
             quantityInput.value--;
             onChangeValue(quantityInput);
+        } else {
+            x = quantityInput.parentElement.parentElement.parentElement;
+            x = x.children[0].children[0];
+            removeItem(x);
         }
     };
 });
+
+function showWarning(item) {
+    item.parentElement.nextElementSibling.classList.remove("d-none");
+}
+
+function hideWarning(item) {
+    item.parentElement.nextElementSibling.classList.add("d-none");
+}

@@ -1,0 +1,18 @@
+.cart-content {
+    overflow-x: auto;
+    display: table;
+    width: 100%;
+}
+
+.cart-content table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.cart-content th,
+.cart-content td {
+    word-wrap: break-word;
+    text-align: center;
+    padding: 8px;
+}

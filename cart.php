@@ -8,7 +8,7 @@ loadMenu();
 require_once 'function/price.php';
 ?>
 
-<div id="content" class="container d-flex flex-column align-item-center vh-100" role="main">
+<div id="content" class="container d-flex flex-column align-item-center" style="min-height: auto; max-height:vh" role="main">
     <?php
     require 'connect_db.php';
     $customer = $_SESSION['username'];
@@ -31,13 +31,13 @@ require_once 'function/price.php';
         CART_EMPTY;
     } else {
         echo <<< CART_CONTENT_HEADER
-            <div class="row w-100">
+            <div class="row w-100 h-auto">
                 <div class="col-lg-8 col-12 mb-4 column">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row row-large row-divided">
+                            <div class="row wrapper">
                                 <div class="cart-content">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped w-100">
                                         <thead>
                                             <tr>
                                                 <th colspan="3" class="product-name">Sản phẩm</th>
@@ -70,29 +70,34 @@ require_once 'function/price.php';
             $formatted_total_price = formatPrice($total_price);
             echo <<< CART_ITEM
                 <tr class="cart-item" product_id={$row['prod_id']}>
-                    <td class="product-name">
+                    <td class="product-name align-middle">
                         <button class="btn btn-outline-danger rounded-circle btn-sm remove-item" onclick="removeItem(this)" ><i class="fa-solid fa-xmark"></i></button>
                     </td>
-                    <td>
+                    <td class="text-center align-middle">
                         <a href="product-detail.php?product_id={$row['prod_id']}">
                             <img src="{$img_path}/{$images[0]}" alt="{$row['product_name']}" class="img-thumbnail" style="width: 100px;">
                         </a>
                     </td>
-                    <td>
+                    <td class="text-center align-middle">
                         <a class="nav-link" href="product-detail.php?product_id={$row['prod_id']}">
                             <span>{$row['product_name']} - {$row['size']}</span>
                             <span class="size" product_size={$row['size']}></span>
                         </a>
                     </td>
-                    <td class="product-price">
+                    <td class="product-price text-center align-middle">
                         <span>{$formatted_price} đ</span>
                     </td>
-                    <td class="align-items-center">
-                        <i class="fa-solid fa-minus"></i>
-                        <input type="number" class="quantity w-1" value="{$row['quantity']}" min="1" max="{$row_max_quantity[strtolower($row['size'])]}" readonly>
-                        <i class="fa-solid fa-plus"></i>
+                    <td class="align-middle">
+                        <div class="d-flex align-items-center justify-content-between" style="max-width: 90%;">
+                            <i class="fa-solid fa-minus text-center flex-shrink" style="width:20%;"></i>
+                            <input type="number" id="quantity_input" class="text-center flex-grow-1 quantity" style="max-width:50%;" value="{$row['quantity']}" min="1" max="{$row_max_quantity[strtolower($row['size'])]}">
+                            <i class="fa-solid fa-plus text-center flex-shrink" style="width:20%;"></i>
+                        </div>
+                        <div id="quantity_warning" class="text-danger small mt-1 d-none bottom-0 start-50">
+                        Chỉ còn {$row_max_quantity[strtolower($row['size'])]} sản phẩm!
+                        </div>
                     </td>
-                    <td class="product-total">
+                    <td class="product-total text-center align-middle">
                         <span>{$formatted_total_price} đ</span>
                     </td>
                 <tr>
