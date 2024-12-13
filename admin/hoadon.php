@@ -2,7 +2,7 @@
 require_once 'site.php';
 loadHeader();
 ?>
-<div class="container order-container vh-100">
+<div class="container order-container">
     <div class="order-info">
         <div class="div-text">
             <h1 class="text-center my-4">Danh sách hóa đơn</h1>
